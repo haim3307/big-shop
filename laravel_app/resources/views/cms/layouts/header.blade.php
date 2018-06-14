@@ -3,6 +3,18 @@
     <div class=" g-col-md-7">
         <ul>
 
+            <li class="iconLabel">
+                <a href="#">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    <span class="badge badge-warning labelCount">3</span>
+                </a>
+            </li>
+            <li class="iconLabel">
+                <a href="#">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span class="badge badge-info labelCount">3</span>
+                </a>
+            </li>
 
             <li id="welcome" class="d-lg-block">
                 @if($user = Auth::user())
