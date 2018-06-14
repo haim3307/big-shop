@@ -1,0 +1,111 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+
+@import '~bootstrap/scss/bootstrap';
+.d-grid{
+  display: grid;
+}
+.d-flex{
+  display: flex;
+}
+.d-grid-row{
+  display: grid;
+  grid-auto-flow: column;
+}
+.img-res{
+  height: 100%;
+  width: auto;
+}
+.centered-g-items{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.row{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+}
+.row>[class^=g-col]{
+  grid-column: span 12;
+}
+.g-row{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+}
+.g-row>[class^=g-col]{
+  grid-column: span 12;
+}
+.f-row{
+  display: flex;
+  flex-flow: wrap;
+}
+.m-0-auto{
+  margin: 0 auto;
+}
+.all-g-centered{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.allCentered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.allCentered-i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+@media (min-width: 768px) {
+  .all-g-centered-md{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+}
+.my-text-overflow{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;
+$class-slug: grid-col !default;
+$class-slug1: g-col !default;
+$class-slug2: grid-row !default;
+$grid-columns: 12 !default;
+$num-breakpoints: length($grid-breakpoints);
+
+
+@each $size-name, $width in $grid-breakpoints {
+  @if($size-name != xs){
+    @media screen and (min-width : #{$width}) {
+      .#{$class-slug}-#{$size-name} { grid-template-columns: repeat(1,1fr)}
+      .#{$class-slug1}-#{$size-name} { grid-column: span 1 !important;}
+      .#{$class-slug2}-#{$size-name} {grid-auto-flow: column}
+      @for $i from 2 through $grid-columns {
+        .#{$class-slug}-#{$size-name}-#{$i} { grid-template-columns: repeat(#{$i},1fr) }
+        .#{$class-slug1}-#{$size-name}-#{$i} { grid-column: span #{$i} !important;}
+      }
+    }
+  }@else{
+    .#{$class-slug}-#{$size-name} { grid-template-columns: repeat(1,1fr) }
+    .#{$class-slug1}-#{$size-name} { grid-column: span 1 !important;}
+    .#{$class-slug2}-#{$size-name} {grid-auto-flow: column}
+    @for $i from 2 through $grid-columns {
+      .#{$class-slug}-#{$i} { grid-template-columns: repeat(#{$i},1fr) }
+      .#{$class-slug1}-#{$i} { grid-column: span #{$i} !important;}
+    }
+  }
+}

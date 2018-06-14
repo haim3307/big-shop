@@ -1,0 +1,45 @@
+.categoryPage{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'SiteRouteWay';
+}
+@media(min-width: 710px) {
+    .categoryPage{
+        grid-template-columns: minmax(auto,350px) 1fr;
+        grid-template-rows: 70px 1fr;
+        grid-template-areas: 'SiteRouteWay SiteRouteWay SiteRouteWay';
+        margin-top: 34px;
+    }
+
+}
+.sideSubCategoryMenu{
+    background-color: #f9f9f9;
+}
+.sideSubCategoryMenu ul{
+    display: grid;
+    grid-auto-rows: 57px;
+}
+.sideSubCategoryMenu ul li{
+    border-bottom: 1px solid #e8e8e8;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+.sideSubCategoryMenu ul li a {
+    font-family: Coda;
+    color:  #2b2b2b;
+    font-size: 1em;/* Approximation due to font substitution */
+    font-weight: 400;
+    line-height: 56px;/* Approximation due to font substitution */
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+}
+.sideSubCategoryMenu .selectedSubCategory{
+    background-color: red;
+}
+.sideSubCategoryMenu .selectedSubCategory a{
+    color: white;
+}
+
