@@ -61,7 +61,7 @@
                     <a href="{{url('cms/page/home')}}">Home</a>
                     </span>
                 </li>
-                @foreach(\App\Page::all() as $navItem)
+                @foreach(\App\Page::all()->except([4,9,5]) as $navItem)
                     <li class="f-row justify-content-between" title="{{ucwords($navItem->title)}}">
                         <span>
                             <i>

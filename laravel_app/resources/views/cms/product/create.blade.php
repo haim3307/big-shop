@@ -6,10 +6,10 @@
         <input type="number" name="price" class="form-control" id="{{$entity}}Price" placeholder="Price" value="{{old('price',$entityItem->price??'')}}">
         @if($errors->has('price')) <div class="text-danger">{{$errors->first('price')}}</div> @endif
     </div>
-    <div class="form-group row flex-column">
+{{--    <div class="form-group row flex-column">
         <label for="{{$entity}}Tags" class="col-sm-2 col-form-label">Tags</label>
         <input type="text" name="tags" data-role="tagsinput" class="form-control" id="{{$entity}}Tags" placeholder="Add Tags">
-    </div>
+    </div>--}}
     <div class="form-group row flex-column">
         <label for="{{$entity}}Category" class="col-sm-2 col-form-label">Category</label>
         <select class="custom-select custom-select-lg mb-3" name="category_id" id="{{$entity}}Category" required="required">

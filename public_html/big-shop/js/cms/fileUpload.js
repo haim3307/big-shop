@@ -96,10 +96,11 @@
 						ajaxData.append( $input.attr( 'name' ), file );
 					});
 				}
+                $form.removeClass( 'is-uploading' );
+                $form.addClass('is-success');
 
-				// ajax request
-				$.ajax(
-					{
+                // ajax request
+				/*$.ajax({
 						url: 			$form.attr( 'action' ),
 						type:			$form.attr( 'method' ),
 						data: 			ajaxData,
@@ -116,11 +117,12 @@
 							$form.addClass( data.success == true ? 'is-success' : 'is-error' );
 							if( !data.success ) $errorMsg.text( data.error );
 						},
-						error: function()
+						error: function(e)
 						{
-							alert( 'Error. Please, contact the webmaster!' );
+							//console.log('upload error',e);
+							//alert( 'Error. Please, contact the webmaster!' );
 						}
-					});
+					});*/
 			}
 			else // fallback Ajax solution upload for older browsers
 			{

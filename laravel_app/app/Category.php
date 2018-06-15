@@ -23,24 +23,29 @@ class Category extends MainModel
     static public function createNew($request)
     {
         $category = new self($request->all());
-        if ($category->save() && $request->hasFile('img') && $request->file('img')->isValid()) {
-            $path = public_path('_img/categories');
-            File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
-            $file = $request->file('img');
-            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            if ($file->move($path, $fileName)) {
-                $img = Image::make($path . '/' . $fileName);
-                $img->resize(600, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $img->save();
-                $category->update(['img' => $fileName]);
+        if ($category->save()) {
+            Toastr::success('New category has been added!');
+            if($category->uploadImg($request,'_img/categories')){
+                return Toastr::success('New category Image has been added!');
             }
-
-            /*                Session::flash('categoryCreated','New category has been added!');*/
-            return Toastr::success('New category has been added!');
+            return Toastr::error('New category Image has not been added!');
         }
         Toastr::error('Category has not been created');
+            /*           if($request->hasFile('img') && $request->file('img')->isValid()){
+                           $path = public_path('_img/categories');
+                           File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
+                           $file = $request->file('img');
+                           $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+                           if ($file->move($path, $fileName)) {
+                               $img = Image::make($path . '/' . $fileName);
+                               $img->resize(600, null, function ($constraint) {
+                                   $constraint->aspectRatio();
+                               });
+                               $img->save();
+                               $category->update(['img' => $fileName]);
+                           }
+                       }*/
+
     }
 
     static public function updateItem($id, $request)

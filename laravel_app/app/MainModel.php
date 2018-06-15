@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use File,Image;
 class MainModel extends Model
 {
     public function scopeGetByUrl($query,$url){
@@ -14,23 +15,22 @@ class MainModel extends Model
     static public function getByNameOrUrl(&$string){
         return self::where('url', '=', $string)->orWhere('name', '=', $string)->first();
     }
-    public function uploadImg($request,$path,$imgWidth = 600,$inputName = null){
+    public function uploadImg($request,$path,$imgSize = ['width'=>600],$inputName = null){
         $path = public_path($path);
-        if ($this->save() && $request->hasFile($inputName??'img') && $request->file($inputName??'img')->isValid()) {
+        if($request->hasFile($inputName??'img') && $request->file($inputName??'img')->isValid()){
             File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
             $file = $request->file($inputName??'img');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             if ($file->move($path, $fileName)) {
                 $img = Image::make($path . '/' . $fileName);
                 $img->orientate();
-                $img->resize($imgWidth, null, function ($constraint) {
-                    $constraint->upsize();
+                $img->resize($imgSize['width']??null, $imgSize['height']??null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $img->save();
                 $this->update([$inputName??'img' => $fileName]);
             }
-            return true;
+            return 1;
         }
     }
     public function updateNavItem(){
