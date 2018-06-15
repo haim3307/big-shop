@@ -1,0 +1,23 @@
+/node_modules
+/laravel_app/node_modules
+/public_html/hot
+/public_html/storage
+/laravel_app/storage/*.key
+/laravel_app/vendor
+/.idea
+/.vscode
+/.vagrant
+/laravel_app/Homestead.json
+/laravel_app/Homestead.yaml
+npm-debug.log
+yarn-error.log
+/laravel_app/.env
+.idea.zip
+laravel_app.zip
+laravel_app/resources/views/cms/dbManager/
+laravel_app/storage/framework/views/.gitignore
+public_html (2).zip
+public_html.zip
+public_html/big-shop/_img/_img_trash/
+public_html/big-shop/css/lib/
+public_html/mix-manifest.json

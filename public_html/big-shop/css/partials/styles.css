@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Coda');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Coda', cursive;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style: none;
+}
+
+.all_site {
+    display: grid;
+    grid-template-rows: minmax(166px,auto) 1fr minmax(518px,auto);
+    background-color: #eaebef;
+    min-height: 95.7vh;
+
+}
+.myAlert{
+    color: red;
+}
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+[v-cloak]{display: none;}
+.SiteRouteWay {  grid-area:SiteRouteWay;background-color: #fafafa; padding: 17px 21px;}
+.SiteRouteWay > div{      flex: 1 300px; padding: 20px 10px;}
+.homeIcon{
+    padding-right: 9px;}
+.siteWayNav{ display: inline-block;
+    padding-top: 3px; }
+.siteWay{ text-transform: capitalize;}
+.dArrow {padding: 0 9px;}
+.siteWay a {
+    text-decoration: none;
+    color: black;
+}
+.d-none-unimportant{
+    display: none;
+}
+/*cart modal*/
+#product_view{
+    z-index: 99999999;
+}
+.product_view .modal-dialog{max-width: 800px; width: 100%;}
+.pre-cost{text-decoration: line-through; color: #a5a5a5;}
+.space-ten{padding: 10px 0;}
+/*!cart modal*/
+.submit {
+    color: #fff;
+    background-color: #bf0d0d !important;
+    border: none;
+    height: 46px;
+    font-size: 14px;
+    padding: 12px 18px;
+}
+
+.submit:active, .submit:focus, .submit:hover {
+    background-color: #0f0f0f !important;
+    outline: none;
+    border: none;
+}
+.clickAlike{
+    cursor: pointer;
+}
+.clickAlike::selection{
+    background: 0;
+}

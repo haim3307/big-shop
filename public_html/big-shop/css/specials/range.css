@@ -1,0 +1,60 @@
+input[type=range].mainRange {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    /*fix for FF unable to apply focus style bug */
+    border: 1px solid white;
+
+    /*required for proper track sizing in FF*/
+    width: 100%;
+}
+
+input[type=range].mainRange::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(219, 224, 231);
+    border-radius: 3px;
+}
+
+input[type=range].mainRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    background: url("../_img/riffles.png") center #fe1f1f no-repeat;
+    width: 102px;
+    height: 19px;
+    border-radius: 15px;
+    margin-top: -4px;
+}
+
+input[type=range].mainRange:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+
+}
+
+input[type=range].mainRange::-moz-range-track {
+    width: 100%;
+    height: 10px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(219, 224, 231);
+    border-radius: 3px;
+}
+
+input[type=range].mainRange::-moz-range-thumb {
+    border: none;
+    background: url("../_img/riffles.png") center #fe1f1f no-repeat;
+    width: 102px;
+    height: 19px;
+    border-radius: 15px;
+    margin-top: -4px;
+}
+
+/*hide the outline behind the border*/
+input[type=range].mainRange:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
