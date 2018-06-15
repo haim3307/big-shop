@@ -128,12 +128,6 @@
                 <span class="d-lg-inline-block title">Links</span>
             </a>
         </li>
-        <li class="link settings-btn activeSettings">
-            <a ui-sref="CMS.settings">
-                <span class="fa fa-cog" aria-hidden="true"></span>
-                <span class="d-lg-inline-block title">Settings</span>
-            </a>
-        </li>
     </ul>
 </div>
 @push('styles')

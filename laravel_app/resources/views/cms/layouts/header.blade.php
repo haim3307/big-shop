@@ -17,10 +17,6 @@
 
         </ul>
     </div>
-    <div class="col-md-5">
-        <input type="text" class="form-control d-lg-block" id="headSearch" placeholder="Search In CMS ...">
-
-    </div>
     <div class="g-col-md-2 d-flex">
 
         <nav class="navbar bg-faded d-sm-none">
