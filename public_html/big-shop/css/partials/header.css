@@ -363,7 +363,7 @@
     }
 
     .searchAndShare>ul {
-        display: grid;
+        display: none;
         justify-content: space-around;
         grid-gap: 24px;
         grid-template-rows: repeat(2, 1fr);

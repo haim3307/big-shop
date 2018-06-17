@@ -7,7 +7,7 @@ use DB, Session, File, Toastr, Image;
 class Product extends MainModel
 {
     //
-    protected $fillable = ['title', 'url', 'description', 'price', 'category_id', 'main_img'];
+    protected $fillable = ['title', 'url', 'description', 'price', 'category_id', 'main_img','stock'];
 
     static public function createNew($request)
     {

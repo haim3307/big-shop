@@ -28,7 +28,8 @@
                                 <h3 class="frameItemTitle">{{$cubeItem->title??$cubeItem->name}}</h3>
                                 <div class="frameItemPrices">
                                     <span style="color: #d70a0a">${{$cubeItem->price}}</span>
-                                    @isset($cubeItem->prev_price)<span style="text-decoration: line-through;">${{$cubeItem->prev_price}}</span>@endisset
+                                    @isset($cubeItem->prev_price)<span
+                                            style="text-decoration: line-through;">${{$cubeItem->prev_price}}</span>@endisset
                                 </div>
                                 <a class="allCentered addToCartB" @include('inc.print-object',['product'=>$cubeItem->getAttributes()])>
                                     <div class="allCentered"><img src="{{asset('_img/Shopping%20Cart%203.png')}}"
@@ -108,6 +109,9 @@
         }
 
         @media (min-width: 810px) {
+            #mainSlider.beforeLoad{
+                max-height: 500px;
+            }
             .mainSlidePImgFrame {
                 grid-row: span 2;
             }
@@ -118,58 +122,62 @@
         }
     </style>
     <script>
-			function tpl() {
-				window.items = {!! $cateItems !!};
-				shopAppOBJ.data.items = window.items;
-				shopAppOBJ.data.itemsAvail = true;
-				shopAppOBJ.methods.selectedTag = function (e) {
-					$.ajax({url: url + '/home/tags/' + $(e.target).data('tag')}).then(function (res) {
-						shopAppOBJ.data.items = res;
-						shopAppOBJ.data.itemsAvail = true;
-					}, function (e) {
-						shopAppOBJ.data.itemsAvail = false
-					});
-					$('.trending ul li').removeClass('trendActive');
-					$(e.target).addClass('trendActive');
-				};
+        function tpl() {
+            window.items = {!! $cateItems !!};
+            shopAppOBJ.data.items = window.items;
+            shopAppOBJ.data.itemsAvail = true;
+            shopAppOBJ.methods.selectedTag = function (e) {
+                $.ajax({url: url + '/home/tags/' + $(e.target).data('tag')}).then(function (res) {
+                    shopAppOBJ.data.items = res;
+                    shopAppOBJ.data.itemsAvail = true;
+                }, function (e) {
+                    shopAppOBJ.data.itemsAvail = false
+                });
+                $('.trending ul li').removeClass('trendActive');
+                $(e.target).addClass('trendActive');
+            };
 
-			}
+        }
 
-			function tplJQ() {
+        function tplJQ() {
 
-			}
+        }
 
-			function tplFlick() {
-				ready(function () {
-					var $mainSliderV = document.getElementById('mainSlider');
-					new Flickity($mainSliderV, {"imagesLoaded": true, "pageDots": false, "autoPlay": 4000});
-					$mainSliderV.classList.add('show');
+        function tplFlick() {
+            var $mainSliderV = document.getElementById('mainSlider');
+            new Flickity($mainSliderV, {
+                "imagesLoaded": true,
+                "pageDots": false,
+                "autoPlay": 4000,
+                "lazyLoad": 1,
+                "bgLazyLoad": true
+            });
+            $mainSliderV.classList.add('show');
+            $mainSliderV.classList.remove('.beforeLoad');
+        }
 
-				});
-			}
+        function tplFlickJQ() {
+            // home page
+            var $featured = $('.featured');
+            $featured.find('.back').on('click', function () {
+                $featured.children('.itemsFrame').flickity('previous');
+            });
+            $featured.find('.forward').on('click', function () {
+                $featured.children('.itemsFrame').flickity('next');
+            });
+            $featured.find('.itemsFrame').flickity({fullscreen: true, groupCells: false, pageDots: false});
 
-			function tplFlickJQ() {
-				// home page
-				var $featured = $('.featured');
-				$featured.find('.back').on('click', function () {
-					$featured.children('.itemsFrame').flickity('previous');
-				});
-				$featured.find('.forward').on('click', function () {
-					$featured.children('.itemsFrame').flickity('next');
-				});
-				$featured.find('.itemsFrame').flickity({fullscreen: true, groupCells: false, pageDots: false});
+            setTimeout(function () {
+                var $mainCarou = $('.itemsDrag'), $controlCarousel = $('#controlCarousel');
+                $controlCarousel.attr('max', ($('.itemDragSlider .flickity-slider').children().length - 2) * 255);
+                $controlCarousel.on('input', function (e) {
 
-				setTimeout(function () {
-					var $mainCarou = $('.itemsDrag'), $controlCarousel = $('#controlCarousel');
-					$controlCarousel.attr('max', ($('.itemDragSlider .flickity-slider').children().length - 2) * 255);
-					$controlCarousel.on('input', function (e) {
+                    $mainCarou.find('.flickity-slider').css('transform', 'translateX(-' + e.target.value + 'px)');
+                });
+            })
+            // !home page
 
-						$mainCarou.find('.flickity-slider').css('transform', 'translateX(-' + e.target.value + 'px)');
-					});
-				})
-				// !home page
-
-			}
+        }
     </script>
 
 @endsection

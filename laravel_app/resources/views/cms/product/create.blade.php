@@ -10,6 +10,7 @@
         <label for="{{$entity}}Tags" class="col-sm-2 col-form-label">Tags</label>
         <input type="text" name="tags" data-role="tagsinput" class="form-control" id="{{$entity}}Tags" placeholder="Add Tags">
     </div>--}}
+    @include('cms.inc.forms.form-unit',['prop'=>'stock','type'=>'number'])
     <div class="form-group row flex-column">
         <label for="{{$entity}}Category" class="col-sm-2 col-form-label">Category</label>
         <select class="custom-select custom-select-lg mb-3" name="category_id" id="{{$entity}}Category" required="required">
